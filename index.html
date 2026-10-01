@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MyDreamGov – Build Your Dream Team</title>
+<style>
+:root{--bg:#f8f9fb;--card:#fff;--ink:#1e1b2e;--mut:#6b6880;--pur:#3d2070;--pur2:#5a3496;--cor:#f96b6b;--line:#e4e1ee;--ok:#d9f7e8;--okt:#0a7a47;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.logo{font-weight:800;color:var(--pur);font-style:italic}
+nav{display:flex;gap:6px;font-size:14px;flex-wrap:wrap}
+nav span{padding:8px 12px;border-radius:10px;color:var(--mut)}
+nav .on{background:var(--pur);color:#fff;font-weight:600}
+.user{font-size:12px;text-align:right;font-weight:700}.user small{display:block;color:#35b24a;font-size:10px;letter-spacing:.05em}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 60px}
+.crumbs{font-size:13px;color:var(--mut);margin-bottom:14px}
+.back{background:none;border:0;color:var(--pur2);font-weight:600;font-size:14px;cursor:pointer;margin-bottom:16px;padding:0}
+.hero{background:linear-gradient(135deg,#3d2070,#5a3496);color:#fff;border-radius:20px;padding:28px 32px;margin-bottom:22px}
+.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:0;opacity:.9}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.choice{background:var(--card);border:2px solid #e0cffa;border-radius:20px;padding:22px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.choice:hover{box-shadow:0 8px 24px rgba(61,32,112,.18)}
+.choice.s{border-color:#f9c3d6}
+.choice h3{margin:0 0 4px;font-size:20px}.choice .sub{color:var(--mut);font-size:14px;margin-bottom:12px}
+.choice p{margin:0 0 14px;font-size:14px;color:var(--mut);line-height:1.5}.choice b{font-size:13px;color:var(--mut);font-weight:500}
+.how{background:var(--card);border:1.5px solid var(--cor);border-radius:16px;overflow:hidden;margin-bottom:20px}
+.how h2{margin:0;background:linear-gradient(90deg,#f96b6b,#ff8a8a);color:#fff;font-size:16px;padding:14px 18px}
+.how ol{margin:0;padding:16px 18px 16px 38px;font-size:14px;color:var(--mut);line-height:1.6}.how li b{color:var(--ink);display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:18px}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.bar{height:8px;background:var(--line);border-radius:6px;margin-top:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pur);border-radius:6px;transition:width .3s}
+.bar.w i{background:var(--cor)}
+.gender{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:13px}
+.pill{display:block;width:max-content;margin:6px auto 14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--pur)}
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.slot{position:relative;min-height:78px;border:2px dashed var(--line);border-radius:14px;background:var(--card);display:flex;align-items:center;gap:14px;padding:14px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.slot:hover{border-color:var(--pur2);background:rgba(90,52,150,.06)}
+.slot.f{border:2px solid transparent;border-left:4px solid var(--pur);box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.plus{width:42px;height:42px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:22px;color:var(--mut);flex:none}
+.slot .t{font-weight:600;font-size:15px}.slot .c{font-size:11px;color:var(--mut);margin-top:3px}
+.slot .n{position:absolute;right:12px;bottom:8px;font-size:10px;color:var(--mut)}
+.slot.f .t{font-size:11px;font-weight:400;color:var(--mut)}.slot.f .nm{font-weight:700;font-size:16px}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px;flex:none}
+.cta{display:block;margin:36px auto 0;padding:18px 40px;border:0;border-radius:16px;font-size:17px;font-weight:700;color:#fff;background:linear-gradient(90deg,#3d2070,#5a3496);cursor:pointer}
+.cta:disabled{background:#cfd3dc;color:#7d8394;cursor:not-allowed}
+.ov{position:fixed;inset:0;background:rgba(20,15,35,.6);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
+.ov.on{display:flex}
+.modal{background:var(--card);border-radius:24px;width:100%;max-width:500px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column}
+.pad{padding:28px}.modal h3{margin:0 0 14px;font-size:22px}
+.btns{display:flex;gap:12px;margin-top:20px}.btns button{flex:1;padding:15px;border:0;border-radius:14px;font-weight:700;font-size:15px;color:#fff;cursor:pointer}
+.k{background:linear-gradient(90deg,#3d2070,#5a3496)}.ch{background:linear-gradient(90deg,#f96b6b,#ff8a8a)}
+.cx{width:100%;margin-top:12px;padding:15px;border:0;border-radius:14px;background:var(--bg);color:var(--ink);font-weight:700;cursor:pointer}
+.mh{background:#3d2070;color:#fff;padding:20px 22px}.mh small{opacity:.85}
+.mh input{width:100%;margin-top:14px;padding:12px 14px;border:0;border-radius:12px;font-size:14px}
+.filters{padding:12px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.chip{border:0;background:var(--bg);color:var(--ink);padding:7px 14px;border-radius:20px;font-size:13px;cursor:pointer;font-weight:600}
+.chip.on{background:#1e2235;color:#fff}
+.filters label{margin-left:auto;font-size:13px;color:var(--mut);display:flex;gap:6px;align-items:center}
+.list{overflow:auto;flex:1}
+.lh{padding:12px 20px 4px;font-size:11px;letter-spacing:.08em;color:var(--mut);font-weight:700}
+.ld{display:flex;gap:14px;align-items:center;padding:14px 20px;border:0;border-bottom:1px solid var(--line);width:100%;background:none;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.ld:hover{background:var(--bg)}.ld:disabled{opacity:.45;cursor:not-allowed}
+.ld b{display:block;font-size:15px}.ld span{font-size:12px;color:var(--mut)}
+.badge{background:var(--ok);color:var(--okt);font-size:11px;padding:2px 8px;border-radius:12px;font-weight:600;margin-left:6px}
+.sum{display:grid;gap:10px;margin-top:6px}.sum .s1{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px}
+.sum small{color:var(--mut);display:block;font-size:11px}
+.fin{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 16px;display:flex;flex-direction:column;gap:22px;align-items:center;background-image:linear-gradient(180deg,rgba(90,52,150,.06),transparent)}
+.tier{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;width:100%}
+.tl{font-size:11px;letter-spacing:.08em;color:var(--mut);font-weight:700;text-align:center;width:100%;margin-bottom:-8px}
+.fc{width:200px;text-align:center;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pur);border-radius:16px;padding:16px 10px;box-shadow:0 4px 14px rgba(61,32,112,.1)}
+.fc.top{width:240px;border-top-color:var(--cor);transform:scale(1.05)}
+.fc .av{margin:0 auto 10px;width:56px;height:56px;font-size:18px}
+.fc small{display:block;font-size:11px;color:var(--mut);min-height:28px}.fc b{font-size:15px}
+.fs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.fs .chip{background:var(--card);border:1px solid var(--line)}
+.acts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}.acts button{padding:14px 26px;border:0;border-radius:14px;font-weight:700;font-size:15px;color:#fff;cursor:pointer}
+.acts .gh{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.hide{display:none}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e1b2e;color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+</style></head><body>
+<header><div class="logo">MyDreamGov</div>
+<nav><span>Home</span><span>Directory</span><span class="on">Be the Change</span><span>Narrative Hub</span><span>Ask Zima</span></nav>
+<div class="user">Adewoye<small>CIVIC STARTER</small></div></header>
+<main>
+<div id="v1">
+ <div class="crumbs">Home › Be the Change › <b>Build Your Dream Team</b></div>
+ <div class="hero"><h1>Build Your Dream Team</h1><p>Choose whether to build a Federal or State-level dream team!</p></div>
+ <div class="choices">
+  <button class="choice" onclick="go('v2')"><h3>Federal Team</h3><div class="sub">National Leadership</div><p>Build your ideal federal government team with 8 key positions including President, Vice President, and Cabinet members.</p><b>8 positions ›</b></button>
+  <button class="choice s" onclick="toast('State teams are not part of this demo yet')"><h3>State Team</h3><div class="sub">State-level Leadership</div><p>Build your dream state government team with 8 positions including Governor, Deputy, and key commissioners.</p><b>Select your state ›</b></button>
+ </div>
+</div>
+<div id="v2" class="hide">
+ <div class="crumbs">Home › Be the Change › Build Dream Team › <b>Federal Team</b></div>
+ <button class="back" onclick="go('v1')">← Back to Level Selection</button>
+ <div class="hero"><h1>Build Your Dream Team</h1><p>Build your ideal federal government team</p></div>
+ <div class="how"><h2>How It Works</h2><ol>
+  <li><b>Simulate pyramids of power</b>Explore how governance structures work by building your own leadership hierarchy with 8 key positions.</li>
+  <li><b>Keep or swap leaders</b>You can keep the current office holder or swap in another leader from the leadership directory.</li>
+  <li><b>Complete &amp; share your team</b>Once all 8 positions are filled, share your dream team.</li></ol></div>
+ <div class="card"><div class="row"><div><b>Team Building Progress</b><div id="pt" style="color:var(--mut);font-size:13px">0 of 8 positions filled</div></div><b id="pp" style="font-size:24px;color:var(--pur)">0%</b></div>
+  <div class="bar"><i id="pb" style="width:0"></i></div>
+  <div class="gender"><div><div class="row"><span>Women</span><b id="gw">0</b></div><div class="bar w"><i id="bw" style="width:0"></i></div></div>
+  <div><div class="row"><span>Men</span><b id="gm">0</b></div><div class="bar"><i id="bm" style="width:0"></i></div></div></div></div>
+ <span class="pill">365 DREAM TEAMS BUILT</span>
+ <div class="slots" id="slots"></div>
+ <button class="cta" id="done" disabled onclick="finish()">Complete &amp; Share Team ›</button>
+</div>
+<div id="v3" class="hide">
+ <div class="crumbs">Home › Be the Change › Build Dream Team › Federal Team › <b>Final Team</b></div>
+ <div class="hero"><h1>🎉 Your Dream Team</h1><p>Here is your final federal team formation, from the top of the pyramid down.</p></div>
+ <div class="fin" id="fin"></div>
+ <div class="fs" id="fs"></div>
+ <div class="acts"><button style="background:linear-gradient(90deg,#3d2070,#5a3496)" onclick="copyTeam()">Copy to share</button><button class="gh" onclick="go('v2')">Edit team</button><button style="background:linear-gradient(90deg,#f96b6b,#ff8a8a)" onclick="restart()">Start over</button></div>
+</div>
+</main>
+
+<div class="ov" id="o1"><div class="modal"><div class="pad"><h3 id="m1t"></h3><div style="color:var(--mut)">Current Holder:</div><div id="m1h" style="color:var(--pur2);font-weight:700;font-size:18px;margin:6px 0 18px"></div><div style="color:var(--mut)">Would you like to keep the current person or select someone new?</div>
+<div class="btns"><button class="k" onclick="keep()">Keep Current</button><button class="ch" onclick="openPick()">Change</button></div><button class="cx" onclick="closeAll()">Cancel</button></div></div></div>
+
+<div class="ov" id="o2"><div class="modal" style="max-width:520px;height:86vh"><div class="mh"><div style="display:flex;justify-content:space-between"><div><b style="font-size:20px">Select a Leader</b><br><small id="m2s"></small></div><button class="chip" style="background:none;color:#fff;font-size:20px" onclick="closeAll()">✕</button></div><input id="q" placeholder="Search by name…" oninput="renderList()"></div>
+<div class="filters"><button class="chip on" data-g="all">All</button><button class="chip" data-g="F">Female</button><button class="chip" data-g="M">Male</button><label><input type="checkbox" id="io" onchange="renderList()"> In office</label></div>
+<div class="list" id="list"></div></div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var P=[
+ {id:1,pos:"President",cur:"Aisha Danjuma"},
+ {id:2,pos:"Vice President",cur:"Chinedu Okafor"},
+ {id:3,pos:"Senate President",cur:"Amaka Nwosu"},
+ {id:4,pos:"Speaker",cur:"Tunde Akinwale"},
+ {id:5,pos:"FCT Minister",cur:"Bisola Adeyemi"},
+ {id:6,pos:"Attorney General of the Federation and Minister of Justice",cur:"Kelechi Nwabunike"},
+ {id:7,pos:"Chief Justice, Supreme Court",cur:"Oluwadamilare Akinjide"},
+ {id:8,pos:"Honourable Minister of Women Affairs",cur:"Halimat Sadiya"}];
+// gender assumed from names; edit here if needed
+var L=[
+ {n:"Aisha Danjuma",g:"F",t:"President",c:"#7c3aed"},
+ {n:"Chinedu Okafor",g:"M",t:"Vice President",c:"#2563eb"},
+ {n:"Amaka Nwosu",g:"F",t:"Senate President",c:"#db2777"},
+ {n:"Tunde Akinwale",g:"M",t:"Speaker",c:"#059669"},
+ {n:"Bisola Adeyemi",g:"F",t:"FCT Minister",c:"#d97706"},
+ {n:"Kelechi Nwabunike",g:"M",t:"Attorney General of the Federation",c:"#0891b2"},
+ {n:"Oluwadamilare Akinjide",g:"M",t:"Chief Justice, Supreme Court",c:"#4f46e5"},
+ {n:"Halimat Sadiya",g:"F",t:"Minister of Women Affairs",c:"#e11d48"}];
+var team={},cur=null,gf="all";
+var $=function(i){return document.getElementById(i)};
+function lead(n){return L.filter(function(x){return x.n===n})[0]}
+function ini(n){return n.split(" ").map(function(w){return w[0]}).slice(0,2).join("")}
+function av(l){return '<div class="av" style="background:'+l.c+'">'+ini(l.n)+'</div>'}
+function go(v){["v1","v2","v3"].forEach(function(i){$(i).classList.toggle("hide",i!==v)});window.scrollTo(0,0)}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2200)}
+function closeAll(){["o1","o2"].forEach(function(i){$(i).classList.remove("on")})}
+function render(){
+ $("slots").innerHTML=P.map(function(p){var l=team[p.id];
+  if(l)return '<button class="slot f" onclick="openSlot('+p.id+')">'+av(l)+'<div><div class="t">'+p.pos+'</div><div class="nm">'+l.n+'</div></div><span class="n">#'+p.id+'</span></button>';
+  return '<button class="slot" onclick="openSlot('+p.id+')"><div class="plus">+</div><div><div class="t">'+p.pos+'</div><div class="c">Current: '+p.cur+'</div></div><span class="n">#'+p.id+'</span></button>'}).join("");
+ var v=Object.keys(team).map(function(k){return team[k]}),w=v.filter(function(x){return x.g==="F"}).length,m=v.length-w;
+ $("pt").textContent=v.length+" of 8 positions filled";$("pp").textContent=Math.round(v.length/8*100)+"%";$("pb").style.width=v.length/8*100+"%";
+ $("gw").textContent=w;$("gm").textContent=m;$("bw").style.width=w/8*100+"%";$("bm").style.width=m/8*100+"%";
+ $("done").disabled=v.length<8}
+function openSlot(id){cur=P.filter(function(p){return p.id===id})[0];
+ $("m1t").textContent=cur.pos;$("m1h").textContent=cur.cur;$("o1").classList.add("on")}
+function keep(){team[cur.id]=lead(cur.cur);closeAll();render()}
+function openPick(){closeAll();$("m2s").innerHTML="For: <b>"+cur.pos+"</b>";$("q").value="";gf="all";
+ document.querySelectorAll(".chip[data-g]").forEach(function(c){c.classList.toggle("on",c.dataset.g==="all")});
+ renderList();$("o2").classList.add("on")}
+function item(l,tag){var used=Object.keys(team).some(function(k){return team[k]===l&&+k!==cur.id});
+ return '<button class="ld"'+(used?' disabled':'')+' onclick="pick(\''+l.n+'\')">'+av(l)+'<div><b>'+l.n+tag+'</b><span>'+(used?'Already on your team':l.t)+'</span></div></button>'}
+function renderList(){var q=$("q").value.toLowerCase(),io=$("io").checked;
+ var f=L.filter(function(l){return l.n.toLowerCase().indexOf(q)>-1&&(gf==="all"||l.g===gf)});
+ var c=f.filter(function(l){return l.n===cur.cur}),o=f.filter(function(l){return l.n!==cur.cur});
+ var h="";
+ if(c.length)h+='<div class="lh">CURRENT OFFICEHOLDER</div>'+item(c[0],'<span class="badge">● Currently in office</span>');
+ if(!io&&o.length)h+='<div class="lh">ALL LEADERS</div>'+o.map(function(l){return item(l,"")}).join("");
+ $("list").innerHTML=h||'<div class="pad" style="color:var(--mut)">No leaders found</div>'}
+document.querySelectorAll(".chip[data-g]").forEach(function(c){c.onclick=function(){gf=c.dataset.g;
+ document.querySelectorAll(".chip[data-g]").forEach(function(x){x.classList.toggle("on",x===c)});renderList()}});
+function pick(n){team[cur.id]=lead(n);closeAll();render()}
+function card(id,top){var p=P.filter(function(x){return x.id===id})[0],l=team[id];return '<div class="fc'+(top?' top':'')+'">'+av(l)+'<small>'+p.pos+'</small><b>'+l.n+'</b></div>'}
+function tier(ids,lbl,top){return '<div class="tl">'+lbl+'</div><div class="tier">'+ids.map(function(i){return card(i,top)}).join("")+'</div>'}
+function finish(){
+ $("fin").innerHTML=tier([1],"EXECUTIVE",true)+tier([2],"DEPUTY")+tier([3,4,7],"LEGISLATURE &amp; JUDICIARY")+tier([5,6,8],"CABINET");
+ var v=P.map(function(p){return team[p.id]}),w=v.filter(function(x){return x.g==="F"}).length;
+ var kept=P.filter(function(p){return team[p.id].n===p.cur}).length;
+ $("fs").innerHTML='<span class="chip">👩 '+w+' women</span><span class="chip">👨 '+(8-w)+' men</span><span class="chip">🔁 '+(8-kept)+' swapped</span><span class="chip">✅ '+kept+' kept</span>';
+ go("v3")}
+function copyTeam(){var t="My Dream Team (MyDreamGov):\n"+P.map(function(p){return p.pos+": "+team[p.id].n}).join("\n");
+ try{navigator.clipboard.writeText(t).then(function(){toast("Copied!")},function(){toast("Copy not available")})}catch(e){toast("Copy not available")}}
+function restart(){team={};closeAll();render()}
+render();
+</script></body></html>
